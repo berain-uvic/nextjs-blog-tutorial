@@ -18,7 +18,7 @@ export default async function Page() {
       <br />
       {posts.map(({ id, title, date }) => (
         <li key={id}>
-          <Link href={`${id}`}> {title} </Link>
+          <Link href={`/posts/${id}`}> {title} </Link>
           <p> {date} </p>
         </li>
       ))}

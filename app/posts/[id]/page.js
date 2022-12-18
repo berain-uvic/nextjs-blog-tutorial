@@ -1,5 +1,17 @@
+export async function generateStaticParams() {
+  const response = await fetch('http://localhost:3000/api/posts');
+  const data = await response.json();
+
+  const ids = data.posts.map((post) => ({
+    id: post.id
+  }));
+
+  return ids;
+}
+
+
 async function getPost(id) {
-  const response = await fetch(`http://localhost:3000/api/posts/${id}`);
+  const response = await fetch(`http://localhost:3000/api/post/${id}`);
   return response.json();
 }
 
