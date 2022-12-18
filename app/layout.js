@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
           <Link href="/">
           <Image
             priority
-            src="/images/profile.png"
+            src="/images/profile.jpg"
             className={utilStyles.borderCircle}
             height={144}
             width={144}
