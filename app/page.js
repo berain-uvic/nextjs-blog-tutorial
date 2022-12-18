@@ -1,4 +1,6 @@
-import Link from 'next/link'
+import Link from 'next/link';
+
+console.log("Hello from the servesr");
 
 export default function Page() {
   return (
