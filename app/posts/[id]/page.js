@@ -1,9 +1,12 @@
-export async function generateStaticParams() {
-  const response = await fetch('http://localhost:3000/api/posts');
-  const data = await response.json();
+import posts from '../../../data/posts';
 
-  const ids = data.posts.map((post) => ({
-    id: post.id
+export async function generateStaticParams() {
+  // const response = await fetch('http://localhost:3000/api/posts');
+  // const data = await response.json();
+  const data = posts;
+
+  const ids = data.result.map((post) => ({
+    id: post.id.toString()
   }));
 
   return ids;

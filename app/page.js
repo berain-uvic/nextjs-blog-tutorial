@@ -1,23 +1,13 @@
 import Link from 'next/link';
+import posts from '../data/posts';
 
-
-async function getPosts() {
-  const response = await fetch('http://localhost:3000/api/posts', { next: { revalidate: 15 }});
-  const data = await response.json();
-  console.log(data)
-
-  return data.posts;
-}
-
-
-export default async function Page() {
-  const posts = await getPosts();
+export default function Page() {
   return (
     <div>
       <h1>Hello, Next.js!</h1>
       <h1> Posts </h1>
       <br />
-      {posts.map(({ id, title, date }) => (
+      {posts.result.map(({ id, title, date }) => (
         <li key={id}>
           <Link href={`/posts/${id}`}> {title} </Link>
           <p> {date} </p>
@@ -25,5 +15,5 @@ export default async function Page() {
       ))}
 
     </div>
-  )
+  );
 }
