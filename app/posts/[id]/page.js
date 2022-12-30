@@ -1,8 +1,6 @@
 import posts from '../../../data/posts';
 
 export async function generateStaticParams() {
-  // const response = await fetch('http://localhost:3000/api/posts');
-  // const data = await response.json();
   const data = posts;
 
   const ids = data.result.map((post) => ({
@@ -13,19 +11,15 @@ export async function generateStaticParams() {
 }
 
 
-async function getPost(id) {
-  try {
-    const response = await fetch(`http://localhost:3000/api/post/${id}`);
-    return response.json();
-  }
-  catch (error) {
-    console.log('Error parsing JSON:', error, response)
-  }
+function getPost(postId) {
+  const selectedPost = posts.result.find(x => x.id === postId)
+
+  return selectedPost;
 }
 
 export default async function Post({ params, searchParams }) {
   const { id } = params;
-  const post = await getPost(id);
+  const post = getPost(id);
 
   console.log(`Params: ${JSON.stringify(params)}`);
 
